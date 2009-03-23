@@ -11,32 +11,32 @@
  *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
  *******************************************************************************/
 
-module snippets.viewers.Snippet043NoColumnTreeViewerKeyboardEditing;
+module org.eclipse.jface.snippets.viewers.Snippet043NoColumnTreeViewerKeyboardEditing;
 
-import dwtx.jface.viewers.CellEditor;
-import dwtx.jface.viewers.ColumnViewerEditor;
-import dwtx.jface.viewers.ColumnViewer;
-import dwtx.jface.viewers.ColumnViewerEditorActivationStrategy;
-import dwtx.jface.viewers.ColumnViewerEditorActivationEvent;
-import dwtx.jface.viewers.FocusCellOwnerDrawHighlighter;
-import dwtx.jface.viewers.ICellModifier;
-import dwtx.jface.viewers.ITreeContentProvider;
-import dwtx.jface.viewers.TextCellEditor;
-import dwtx.jface.viewers.TreePath;
-import dwtx.jface.viewers.TreeViewerFocusCellManager;
-import dwtx.jface.viewers.TreeViewerEditor;
-import dwtx.jface.viewers.TreeViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.DWT;
-import dwt.events.SelectionEvent;
-import dwt.events.SelectionListener;
-import dwt.layout.FillLayout;
-import dwt.widgets.Button;
-import dwt.widgets.Display;
-import dwt.widgets.Item;
-import dwt.widgets.Shell;
+import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.ColumnViewerEditor;
+import org.eclipse.jface.viewers.ColumnViewer;
+import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
+import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
+import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
+import org.eclipse.jface.viewers.ICellModifier;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.TextCellEditor;
+import org.eclipse.jface.viewers.TreePath;
+import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
+import org.eclipse.jface.viewers.TreeViewerEditor;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Item;
+import org.eclipse.swt.widgets.Shell;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 
 import tango.util.Convert;
 import tango.util.container.LinkedList;
@@ -68,10 +68,10 @@ void main(String[] args) {
 public class Snippet043NoColumnTreeViewerKeyboardEditing {
     alias LinkedList!(MyModel) ArrayList;
     public this(Shell shell) {
-        Button b = new Button(shell, DWT.PUSH);
+        Button b = new Button(shell, SWT.PUSH);
         b.setText("BBB");
-        final TreeViewer v = new TreeViewer(shell, DWT.BORDER
-                | DWT.FULL_SELECTION);
+        final TreeViewer v = new TreeViewer(shell, SWT.BORDER
+                | SWT.FULL_SELECTION);
         b.addSelectionListener(new class(v) SelectionListener {
             TreeViewer v;
             this(TreeViewer v_)
@@ -127,7 +127,7 @@ public class Snippet043NoColumnTreeViewerKeyboardEditing {
                     ColumnViewerEditorActivationEvent event) {
                 return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
                         || event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
-                        || (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == DWT.CR)
+                        || (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == SWT.CR)
                         || event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC;
             }
         };

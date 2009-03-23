@@ -11,27 +11,27 @@
  *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
  *******************************************************************************/
 
-module snippets.viewers.Snippet014TreeViewerNoMandatoryLabelProvider;
+module org.eclipse.jface.snippets.viewers.Snippet014TreeViewerNoMandatoryLabelProvider;
 
 
-import dwtx.jface.resource.FontRegistry;
-import dwtx.jface.viewers.ITableColorProvider;
-import dwtx.jface.viewers.ITableFontProvider;
-import dwtx.jface.viewers.ITableLabelProvider;
-import dwtx.jface.viewers.ITreeContentProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.TreeViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.DWT;
-import dwt.graphics.Color;
-import dwt.graphics.Font;
-import dwt.graphics.Image;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
-import dwt.widgets.TreeColumn;
+import org.eclipse.jface.resource.FontRegistry;
+import org.eclipse.jface.viewers.ITableColorProvider;
+import org.eclipse.jface.viewers.ITableFontProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TreeColumn;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 
 import tango.util.Convert;
 import tango.util.container.LinkedList;
@@ -68,7 +68,7 @@ public class Snippet014TreeViewerNoMandatoryLabelProvider {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
          */
         public Object[] getElements(Object inputElement) {
             return (cast(MyModel) inputElement).child.toArray();
@@ -77,7 +77,7 @@ public class Snippet014TreeViewerNoMandatoryLabelProvider {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IContentProvider#dispose()
+         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
          */
         public void dispose() {
 
@@ -86,7 +86,7 @@ public class Snippet014TreeViewerNoMandatoryLabelProvider {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IContentProvider#inputChanged(dwtx.jface.viewers.Viewer,
+         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
          *      java.lang.Object, java.lang.Object)
          */
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -96,7 +96,7 @@ public class Snippet014TreeViewerNoMandatoryLabelProvider {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
+         * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
          */
         public Object[] getChildren(Object parentElement) {
             return getElements(parentElement);
@@ -105,7 +105,7 @@ public class Snippet014TreeViewerNoMandatoryLabelProvider {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
+         * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
          */
         public Object getParent(Object element) {
             if (element is null) {
@@ -118,7 +118,7 @@ public class Snippet014TreeViewerNoMandatoryLabelProvider {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
+         * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
          */
         public bool hasChildren(Object element) {
             return (cast(MyModel) element).child.size() > 0;
@@ -177,14 +177,14 @@ public class Snippet014TreeViewerNoMandatoryLabelProvider {
 
         public Color getBackground(Object element, int columnIndex) {
             if ((cast(MyModel) element).counter % 2 == 0) {
-                return Display.getCurrent().getSystemColor(DWT.COLOR_RED);
+                return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
             }
             return null;
         }
 
         public Color getForeground(Object element, int columnIndex) {
             if ((cast(MyModel) element).counter % 2 == 1) {
-                return Display.getCurrent().getSystemColor(DWT.COLOR_RED);
+                return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
             }
             return null;
         }
@@ -194,11 +194,11 @@ public class Snippet014TreeViewerNoMandatoryLabelProvider {
     public this(Shell shell) {
         final TreeViewer v = new TreeViewer(shell);
 
-        TreeColumn column = new TreeColumn(v.getTree(),DWT.NONE);
+        TreeColumn column = new TreeColumn(v.getTree(),SWT.NONE);
         column.setWidth(200);
         column.setText("Column 1");
 
-        column = new TreeColumn(v.getTree(),DWT.NONE);
+        column = new TreeColumn(v.getTree(),SWT.NONE);
         column.setWidth(200);
         column.setText("Column 2");
 

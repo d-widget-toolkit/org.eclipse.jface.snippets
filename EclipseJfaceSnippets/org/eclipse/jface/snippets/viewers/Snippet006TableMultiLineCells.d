@@ -10,31 +10,31 @@
 * Port to the D programming language:
 *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
 *******************************************************************************/
-module snippets.viewers.Snippet006TableMultiLineCells;
+module org.eclipse.jface.snippets.viewers.Snippet006TableMultiLineCells;
 
 
 // http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.jface.snippets/Eclipse%20JFace%20Snippets/org/eclipse/jface/snippets/viewers/Snippet006TableMultiLineCells.java?view=markup
 
-import dwtx.jface.resource.JFaceResources;
-import dwtx.jface.viewers.ColumnPixelData;
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.OwnerDrawLabelProvider;
-import dwtx.jface.viewers.StructuredSelection;
-import dwtx.jface.viewers.TableLayout;
-import dwtx.jface.viewers.Viewer;
-import dwtx.jface.viewers.TableViewer;
-import dwt.DWT;
-import dwt.graphics.Font;
-import dwt.graphics.Point;
-import dwt.layout.GridData;
-import dwt.layout.GridLayout;
-import dwt.widgets.Composite;
-import dwt.widgets.Display;
-import dwt.widgets.Event;
-import dwt.widgets.Shell;
-import dwt.widgets.TableColumn;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.viewers.ColumnPixelData;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.OwnerDrawLabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TableLayout;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TableColumn;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 version(JIVE){
     import jive.stacktrace;
 }
@@ -48,7 +48,7 @@ public class Snippet006TableMultiLineCells {
     public static void main(String[] args) {
 
         Display display = new Display();
-        Shell shell = new Shell(display, DWT.CLOSE|DWT.RESIZE);
+        Shell shell = new Shell(display, SWT.CLOSE|SWT.RESIZE);
         shell.setSize(400, 400);
         shell.setLayout(new GridLayout());
 
@@ -165,16 +165,16 @@ public class Snippet006TableMultiLineCells {
     /*
      * (non-Javadoc)
      *
-     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(dwt.widgets.Composite)
+     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
      */
     public void createPartControl(Composite parent) {
-        viewer = new TableViewer(parent, DWT.FULL_SELECTION);
+        viewer = new TableViewer(parent, SWT.FULL_SELECTION);
 
         viewer.setContentProvider(new class() IStructuredContentProvider {
             /*
              * (non-Javadoc)
              *
-             * @see dwtx.jface.viewers.IContentProvider#dispose()
+             * @see org.eclipse.jface.viewers.IContentProvider#dispose()
              */
             public void dispose() {
             }
@@ -182,7 +182,7 @@ public class Snippet006TableMultiLineCells {
             /*
              * (non-Javadoc)
              *
-             * @see dwtx.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+             * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
              */
             public Object[] getElements(Object inputElement) {
                 return entries;
@@ -191,17 +191,17 @@ public class Snippet006TableMultiLineCells {
             /*
              * (non-Javadoc)
              *
-             * @see dwtx.jface.viewers.IContentProvider#inputChanged(dwtx.jface.viewers.Viewer,
+             * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
              *      java.lang.Object, java.lang.Object)
              */
-            public void inputChanged(dwtx.jface.viewers.Viewer.Viewer viewer, Object oldInput, Object newInput) {
+            public void inputChanged(org.eclipse.jface.viewers.Viewer.Viewer viewer, Object oldInput, Object newInput) {
             }
         });
         createColumns();
 
         viewer.setLabelProvider(new class OwnerDrawLabelProvider {
             /* (non-Javadoc)
-             * @see dwtx.jface.viewers.OwnerDrawLabelProvider#measure(dwt.widgets.Event, java.lang.Object)
+             * @see org.eclipse.jface.viewers.OwnerDrawLabelProvider#measure(org.eclipse.swt.widgets.Event, java.lang.Object)
              */
             protected void measure(Event event, Object element) {
                 LineEntry line = cast(LineEntry) element;
@@ -214,7 +214,7 @@ public class Snippet006TableMultiLineCells {
             /*
              * (non-Javadoc)
              *
-             * @see dwtx.jface.viewers.OwnerDrawLabelProvider#paint(dwt.widgets.Event,
+             * @see org.eclipse.jface.viewers.OwnerDrawLabelProvider#paint(org.eclipse.swt.widgets.Event,
              *      java.lang.Object)
              */
             protected void paint(Event event, Object element) {
@@ -243,7 +243,7 @@ public class Snippet006TableMultiLineCells {
         viewer.getTable().setHeaderVisible(true);
         viewer.getTable().setLinesVisible(true);
 
-        TableColumn tc = new TableColumn(viewer.getTable(), DWT.NONE, 0);
+        TableColumn tc = new TableColumn(viewer.getTable(), SWT.NONE, 0);
         layout.addColumnData(new ColumnPixelData(350));
         tc.setText("Lines");
 

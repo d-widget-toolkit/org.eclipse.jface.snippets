@@ -9,33 +9,34 @@
  *     Tom Schindl - initial API and implementation
  *******************************************************************************/
 
-module dwtx.jface.snippets.window.Snippet023TreeViewerCustomTooltips;
+module org.eclipse.jface.snippets.window.Snippet023TreeViewerCustomTooltips;
 
-import dwtx.jface.viewers.CellLabelProvider;
-import dwtx.jface.viewers.ITreeContentProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.TreeViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.DWT;
-import dwt.graphics.Point;
-import dwt.graphics.Rectangle;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Event;
-import dwt.widgets.Label;
-import dwt.widgets.Listener;
-import dwt.widgets.Shell;
-import dwt.widgets.TreeItem;
+import org.eclipse.jface.viewers.CellLabelProvider;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TreeItem;
 
-import dwtx.dwtxhelper.Collection;
-import dwt.dwthelper.utils;
+import java.lang.all;
+import java.util.ArrayList;
+
 import tango.text.convert.Format;
 import tango.util.log.Trace;
 
 /**
  * A simple TreeViewer to demonstrate how custom tooltips could be created
  * easily. This is an extended version from
- * http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/dwt.snippets/src/org/eclipse/swt/snippets/Snippet125.java
+ * http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.swt.snippets/src/org/eclipse/swt/snippets/Snippet125.java
  *
  * This code is for users pre 3.3 others could use newly added tooltip support in
  * {@link CellLabelProvider}
@@ -49,7 +50,7 @@ public class Snippet023TreeViewerCustomTooltips {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
          */
         public Object[] getElements(Object inputElement) {
             return (cast(MyModel) inputElement).child.toArray();
@@ -58,7 +59,7 @@ public class Snippet023TreeViewerCustomTooltips {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IContentProvider#dispose()
+         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
          */
         public void dispose() {
 
@@ -67,7 +68,7 @@ public class Snippet023TreeViewerCustomTooltips {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IContentProvider#inputChanged(dwtx.jface.viewers.Viewer,
+         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
          *      java.lang.Object, java.lang.Object)
          */
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -77,7 +78,7 @@ public class Snippet023TreeViewerCustomTooltips {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
+         * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
          */
         public Object[] getChildren(Object parentElement) {
             return getElements(parentElement);
@@ -86,7 +87,7 @@ public class Snippet023TreeViewerCustomTooltips {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
+         * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
          */
         public Object getParent(Object element) {
             if (element is null) {
@@ -99,7 +100,7 @@ public class Snippet023TreeViewerCustomTooltips {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
+         * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
          */
         public bool hasChildren(Object element) {
             return (cast(MyModel) element).child.size() > 0;
@@ -139,17 +140,17 @@ public class Snippet023TreeViewerCustomTooltips {
             Label label = cast(Label)event.widget;
             Shell shell_ = label.getShell ();
             switch (event.type) {
-                case DWT.MouseDown:
+                case SWT.MouseDown:
                     Event e = new Event ();
                     e.item = cast(TreeItem) label.getData ("_TABLEITEM");
                     // Assuming table is single select, set the selection as if
                     // the mouse down event went through to the table
                     v.getTree().setSelection ([cast(TreeItem) e.item]);
-                    v.getTree().notifyListeners (DWT.Selection, e);
+                    v.getTree().notifyListeners (SWT.Selection, e);
                     shell_.dispose ();
                     v.getTree().setFocus();
                     break;
-                case DWT.MouseExit:
+                case SWT.MouseExit:
                     shell_.dispose ();
                     break;
                 default:
@@ -157,10 +158,10 @@ public class Snippet023TreeViewerCustomTooltips {
         });
 
         Listener treeListener = new MyTreeListener();
-        v.getTree().addListener (DWT.Dispose, treeListener);
-        v.getTree().addListener (DWT.KeyDown, treeListener);
-        v.getTree().addListener (DWT.MouseMove, treeListener);
-        v.getTree().addListener (DWT.MouseHover, treeListener);
+        v.getTree().addListener (SWT.Dispose, treeListener);
+        v.getTree().addListener (SWT.KeyDown, treeListener);
+        v.getTree().addListener (SWT.MouseMove, treeListener);
+        v.getTree().addListener (SWT.MouseHover, treeListener);
     }
 
     class MyTreeListener : Listener {
@@ -168,16 +169,16 @@ public class Snippet023TreeViewerCustomTooltips {
         Label label = null;
         public void handleEvent (Event event) {
             switch (event.type) {
-                case DWT.Dispose:
-                case DWT.KeyDown:
-                case DWT.MouseMove: {
+                case SWT.Dispose:
+                case SWT.KeyDown:
+                case SWT.MouseMove: {
                     if (tip is null) break;
                     tip.dispose ();
                     tip = null;
                     label = null;
                     break;
                 }
-                case DWT.MouseHover: {
+                case SWT.MouseHover: {
                     Point coords = new Point(event.x, event.y);
                     TreeItem item = v.getTree().getItem(coords);
                     if (item !is null) {
@@ -186,19 +187,19 @@ public class Snippet023TreeViewerCustomTooltips {
                         for (int i = 0; i < columns || i is 0; i++) {
                             if (item.getBounds(i).contains(coords)) {
                                 if (tip !is null  && !tip.isDisposed ()) tip.dispose ();
-                                tip = new Shell (v.getTree().getShell(), DWT.ON_TOP | DWT.NO_FOCUS | DWT.TOOL);
-                                tip.setBackground (v.getTree().getDisplay().getSystemColor (DWT.COLOR_INFO_BACKGROUND));
+                                tip = new Shell (v.getTree().getShell(), SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);
+                                tip.setBackground (v.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
                                 FillLayout layout = new FillLayout ();
                                 layout.marginWidth = 2;
                                 tip.setLayout (layout);
-                                label = new Label (tip, DWT.NONE);
-                                label.setForeground (v.getTree().getDisplay().getSystemColor (DWT.COLOR_INFO_FOREGROUND));
-                                label.setBackground (v.getTree().getDisplay().getSystemColor (DWT.COLOR_INFO_BACKGROUND));
+                                label = new Label (tip, SWT.NONE);
+                                label.setForeground (v.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_FOREGROUND));
+                                label.setBackground (v.getTree().getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
                                 label.setData ("_TABLEITEM", item);
                                 label.setText (Format("Tooltip: {} => {}", item.getData(), i));
-                                label.addListener (DWT.MouseExit, labelListener);
-                                label.addListener (DWT.MouseDown, labelListener);
-                                Point size = tip.computeSize (DWT.DEFAULT, DWT.DEFAULT);
+                                label.addListener (SWT.MouseExit, labelListener);
+                                label.addListener (SWT.MouseDown, labelListener);
+                                Point size = tip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
                                 Rectangle rect = item.getBounds (i);
                                 Point pt = v.getTree().toDisplay (rect.x, rect.y);
                                 tip.setBounds (pt.x, pt.y, size.x, size.y);

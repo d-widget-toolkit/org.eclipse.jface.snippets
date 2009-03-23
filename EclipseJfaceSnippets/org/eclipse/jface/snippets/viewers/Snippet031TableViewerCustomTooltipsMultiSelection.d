@@ -11,32 +11,31 @@
  *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
  *******************************************************************************/
 
-module snippets.viewers.Snippet031TableViewerCustomTooltipsMultiSelection;
+module org.eclipse.jface.snippets.viewers.Snippet031TableViewerCustomTooltipsMultiSelection;
 
 // http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.jface.snippets/Eclipse%20JFace%20Snippets/org/eclipse/jface/snippets/viewers/Snippet031TableViewerCustomTooltipsMultiSelection.java?view=markup
 
-import dwtx.dwtxhelper.Collection;
 import tango.util.Convert;
+import java.util.ArrayList;
 
-import dwtx.jface.viewers.ArrayContentProvider;
-import dwtx.jface.viewers.ILabelProviderListener;
-import dwtx.jface.viewers.ITableLabelProvider;
-import dwtx.jface.viewers.TableViewer;
-import dwt.DWT;
-import dwt.graphics.Image;
-import dwt.graphics.Point;
-import dwt.graphics.Rectangle;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Event;
-import dwt.widgets.Label;
-import dwt.widgets.Listener;
-import dwt.widgets.Shell;
-import dwt.widgets.Table;
-import dwt.widgets.TableColumn;
-import dwt.widgets.TableItem;
-import dwt.dwthelper.System;
-import dwt.widgets.Listener;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Listener;
 
 alias char[] String;
 void main(String[] args)
@@ -95,13 +94,13 @@ public class Snippet031TableViewerCustomTooltipsMultiSelection {
     public this(Shell shell) {
 
 
-        final Table table = new Table(shell, DWT.H_SCROLL | DWT.V_SCROLL | DWT.MULTI | DWT.FULL_SELECTION);
+        final Table table = new Table(shell, SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI | SWT.FULL_SELECTION);
         table.setHeaderVisible(true);
         table.setLinesVisible(true);
 
         final TableViewer v = new TableViewer(table);
-        TableColumn tableColumn1 = new TableColumn(table, DWT.NONE);
-        TableColumn tableColumn2 = new TableColumn(table, DWT.NONE);
+        TableColumn tableColumn1 = new TableColumn(table, SWT.NONE);
+        TableColumn tableColumn2 = new TableColumn(table, SWT.NONE);
 
         String column1 = "Column 1", column2 = "Column 2";
         /* Setup the table  columns */
@@ -120,18 +119,18 @@ public class Snippet031TableViewerCustomTooltipsMultiSelection {
         /**
          * The listener that gets added to the table.  This listener is responsible for creating the tooltips
          * when hovering over a cell item. This listener will listen for the following events:
-         *  <li>DWT.KeyDown     - to remove the tooltip</li>
-         *  <li>DWT.Dispose     - to remove the tooltip</li>
-         *  <li>DWT.MouseMove   - to remove the tooltip</li>
-         *  <li>DWT.MouseHover  - to set the tooltip</li>
+         *  <li>SWT.KeyDown     - to remove the tooltip</li>
+         *  <li>SWT.Dispose     - to remove the tooltip</li>
+         *  <li>SWT.MouseMove   - to remove the tooltip</li>
+         *  <li>SWT.MouseHover  - to set the tooltip</li>
          */
 
         Listener tableListener = dgListener(&handleTableListener, table);
 
-        table.addListener (DWT.Dispose, tableListener);
-        table.addListener (DWT.KeyDown, tableListener);
-        table.addListener (DWT.MouseMove, tableListener);
-        table.addListener (DWT.MouseHover, tableListener);
+        table.addListener (SWT.Dispose, tableListener);
+        table.addListener (SWT.KeyDown, tableListener);
+        table.addListener (SWT.MouseMove, tableListener);
+        table.addListener (SWT.MouseHover, tableListener);
     }
 
     void handleTableListener(Event event, Table table)
@@ -141,19 +140,19 @@ public class Snippet031TableViewerCustomTooltipsMultiSelection {
 
         /*
          * (non-Javadoc)
-         * @see dwt.widgets.Listener#handleEvent(dwt.widgets.Event)
+         * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
          */
        switch (event.type) {
-            case DWT.KeyDown:
-            case DWT.Dispose:
-            case DWT.MouseMove: {
+            case SWT.KeyDown:
+            case SWT.Dispose:
+            case SWT.MouseMove: {
                 if (tooltip is null) break;
                 tooltip.dispose ();
                 tooltip = null;
                 label = null;
                 break;
             }
-            case DWT.MouseHover: {
+            case SWT.MouseHover: {
                 Point coords = new Point(event.x, event.y);
                 TableItem item = table.getItem(coords);
                 if (item !is null) {
@@ -164,14 +163,14 @@ public class Snippet031TableViewerCustomTooltipsMultiSelection {
                             if (tooltip !is null  && !tooltip.isDisposed ()) tooltip.dispose ();
 
                             /* Create a new Tooltip */
-                            tooltip = new Shell (table.getShell(), DWT.ON_TOP | DWT.NO_FOCUS | DWT.TOOL);
-                            tooltip.setBackground (table.getDisplay().getSystemColor (DWT.COLOR_INFO_BACKGROUND));
+                            tooltip = new Shell (table.getShell(), SWT.ON_TOP | SWT.NO_FOCUS | SWT.TOOL);
+                            tooltip.setBackground (table.getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
                             FillLayout layout = new FillLayout ();
                             layout.marginWidth = 2;
                             tooltip.setLayout (layout);
-                            label = new Label (tooltip, DWT.NONE);
-                            label.setForeground (table.getDisplay().getSystemColor (DWT.COLOR_INFO_FOREGROUND));
-                            label.setBackground (table.getDisplay().getSystemColor (DWT.COLOR_INFO_BACKGROUND));
+                            label = new Label (tooltip, SWT.NONE);
+                            label.setForeground (table.getDisplay().getSystemColor (SWT.COLOR_INFO_FOREGROUND));
+                            label.setBackground (table.getDisplay().getSystemColor (SWT.COLOR_INFO_BACKGROUND));
 
                             /* Store the TableItem with the label so we can pass the mouse event later */
                             label.setData ("_TableItem_", item);
@@ -180,11 +179,11 @@ public class Snippet031TableViewerCustomTooltipsMultiSelection {
                             label.setText("Tooltip: " ~ to!(char[])(item.getData()) ~ " : " ~ to!(char[])(columnIndex));
 
                             /* Setup Listeners to remove the tooltip and transfer the received mouse events */
-                            label.addListener (DWT.MouseExit, tooltipLabelListener);
-                            label.addListener (DWT.MouseDown, tooltipLabelListener);
+                            label.addListener (SWT.MouseExit, tooltipLabelListener);
+                            label.addListener (SWT.MouseDown, tooltipLabelListener);
 
                             /* Set the size and position of the tooltip */
-                            Point size = tooltip.computeSize (DWT.DEFAULT, DWT.DEFAULT);
+                            Point size = tooltip.computeSize (SWT.DEFAULT, SWT.DEFAULT);
                             Rectangle rect = item.getBounds (columnIndex);
                             Point pt = table.toDisplay (rect.x, rect.y);
                             tooltip.setBounds (pt.x, pt.y, size.x, size.y);
@@ -206,17 +205,17 @@ public class Snippet031TableViewerCustomTooltipsMultiSelection {
     final TooltipLabelListener tooltipLabelListener;
     final class TooltipLabelListener : Listener {
         private bool isCTRLDown(Event e) {
-            return (e.stateMask & DWT.CTRL) != 0;
+            return (e.stateMask & SWT.CTRL) != 0;
         }
        /*
         * (non-Javadoc)
-        * @see dwt.widgets.Listener#handleEvent(dwt.widgets.Event)
+        * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
         */
        public void handleEvent (Event event) {
            Label label = cast(Label)event.widget;
            Shell shell = label.getShell ();
            switch (event.type) {
-                case DWT.MouseDown: /* Handle a user Click */
+                case SWT.MouseDown: /* Handle a user Click */
                     /* Extract our Data */
                     Event e = new Event ();
                     e.item = cast(TableItem) label.getData ("_TableItem_");
@@ -257,13 +256,13 @@ public class Snippet031TableViewerCustomTooltipsMultiSelection {
                     }
                     /* Set the new selection of the table and notify the listeners */
                     table.setSelection (newSelection);
-                    table.notifyListeners (DWT.Selection, e);
+                    table.notifyListeners (SWT.Selection, e);
 
                     /* Remove the Tooltip */
                     shell.dispose ();
                     table.setFocus();
                     break;
-                case DWT.MouseExit:
+                case SWT.MouseExit:
                     shell.dispose ();
                     break;
             }

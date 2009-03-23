@@ -11,21 +11,21 @@
  *     wbaxter at gmail dot com
  *******************************************************************************/
 
-module snippets.viewers.Snippet001TableViewer;
+module org.eclipse.jface.snippets.viewers.Snippet001TableViewer;
 
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.TableViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
-import dwt.DWT;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.SWT;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
+import java.util.ArrayList;
 
 import tango.util.Convert;
-import dwtx.dwtxhelper.Collection;
 
 /**
  * A simple TableViewer to demonstrate usage

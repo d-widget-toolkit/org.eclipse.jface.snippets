@@ -11,26 +11,26 @@
  *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
  *******************************************************************************/
 
-module snippets.viewers.Snippet016TableLayout;
+module org.eclipse.jface.snippets.viewers.Snippet016TableLayout;
 
 
-import dwtx.jface.layout.TableColumnLayout;
-import dwtx.jface.viewers.ColumnWeightData;
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.ITableLabelProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.TableViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.DWT;
-import dwt.graphics.Image;
-import dwt.layout.FillLayout;
-import dwt.widgets.Composite;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
-import dwt.widgets.Table;
-import dwt.widgets.TableColumn;
+import org.eclipse.jface.layout.TableColumnLayout;
+import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 
 import tango.util.Convert;
 /**
@@ -66,7 +66,7 @@ public class Snippet016TableLayout {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
          */
         public Object[] getElements(Object inputElement) {
             return (cast(ArrayWrapperObject) inputElement).array;
@@ -75,7 +75,7 @@ public class Snippet016TableLayout {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IContentProvider#dispose()
+         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
          */
         public void dispose() {
 
@@ -84,7 +84,7 @@ public class Snippet016TableLayout {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IContentProvider#inputChanged(dwtx.jface.viewers.Viewer,
+         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
          *      java.lang.Object, java.lang.Object)
          */
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -118,7 +118,7 @@ public class Snippet016TableLayout {
     }
 
     public this(Composite comp) {
-        final TableViewer v = new TableViewer(new Table(comp, DWT.BORDER));
+        final TableViewer v = new TableViewer(new Table(comp, SWT.BORDER));
         v.setLabelProvider(new MyLabelProvider());
         v.setContentProvider(new MyContentProvider());
         v.getTable().setHeaderVisible(true);
@@ -126,12 +126,12 @@ public class Snippet016TableLayout {
         TableColumnLayout ad = new TableColumnLayout();
         comp.setLayout(ad);
 
-        TableColumn column = new TableColumn(v.getTable(), DWT.NONE);
+        TableColumn column = new TableColumn(v.getTable(), SWT.NONE);
         column.setText("Column 1");
         column.setMoveable(true);
         ad.setColumnData(column, new ColumnWeightData(90, 290));
 
-        column = new TableColumn(v.getTable(), DWT.NONE);
+        column = new TableColumn(v.getTable(), SWT.NONE);
         column.setText("Column 2");
         column.setMoveable(true);
         ad.setColumnData(column, new ColumnWeightData(10, 200));

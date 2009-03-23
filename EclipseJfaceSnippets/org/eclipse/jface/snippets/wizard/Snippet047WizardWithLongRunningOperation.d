@@ -12,35 +12,34 @@
  *******************************************************************************/
 module jface.snippets.wizard.Snippet047WizardWithLongRunningOperation;
 
-import dwtx.jface.viewers.ArrayContentProvider;
-import dwtx.jface.viewers.ISelectionChangedListener;
-import dwtx.jface.viewers.SelectionChangedEvent;
-import dwtx.jface.viewers.TableViewer;
-import dwtx.jface.wizard.IWizardPage;
-import dwtx.jface.wizard.Wizard;
-import dwtx.jface.wizard.WizardDialog;
-import dwtx.jface.wizard.WizardPage;
-import dwt.DWT;
-import dwt.events.SelectionAdapter;
-import dwt.events.SelectionEvent;
-import dwt.layout.FillLayout;
-import dwt.layout.GridData;
-import dwt.layout.GridLayout;
-import dwt.widgets.Button;
-import dwt.widgets.Composite;
-import dwt.widgets.Display;
-import dwt.widgets.Label;
-import dwt.widgets.ProgressBar;
-import dwt.widgets.Shell;
+import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.wizard.IWizardPage;
+import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.ProgressBar;
+import org.eclipse.swt.widgets.Shell;
 
-import dwt.dwthelper.utils;
-import dwt.dwthelper.Runnable;
-import dwtx.dwtxhelper.Collection;
-import tango.core.Thread;
+import java.lang.all;
+import java.utils.ArrayList;
+
+import java.lang.Thread;
 import tango.text.convert.Format;
-import tango.util.log.Trace;
 
-import dwtx.jface.operation.ModalContext;
+import org.eclipse.jface.operation.ModalContext;
 
 /**
  * Example how to load data from a background thread into a TableViewer
@@ -61,7 +60,7 @@ public class Snippet047WizardWithLongRunningOperation {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.wizard.Wizard#addPages()
+         * @see org.eclipse.jface.wizard.Wizard#addPages()
          */
         public void addPages() {
             addPage(new MyWizardPageThread("Thread Page", loadingType));
@@ -75,7 +74,7 @@ public class Snippet047WizardWithLongRunningOperation {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.wizard.Wizard#canFinish()
+         * @see org.eclipse.jface.wizard.Wizard#canFinish()
          */
         public bool canFinish() {
             IWizardPage[] pages = getPages();
@@ -98,7 +97,7 @@ public class Snippet047WizardWithLongRunningOperation {
         }
 
         public /+override+/ void createControl(Composite parent) {
-            Composite comp = new Composite(parent, DWT.NONE);
+            Composite comp = new Composite(parent, SWT.NONE);
             setControl(comp);
         }
     }
@@ -118,10 +117,10 @@ public class Snippet047WizardWithLongRunningOperation {
             auto mt = new MyThread();
             mt.parent = parent;
 
-            mt.comp = new Composite(parent, DWT.NONE);
+            mt.comp = new Composite(parent, SWT.NONE);
             mt.comp.setLayout(new GridLayout(1, false));
 
-            v = new TableViewer(mt.comp, DWT.FULL_SELECTION);
+            v = new TableViewer(mt.comp, SWT.FULL_SELECTION);
             v.setContentProvider(new ArrayContentProvider!(Object)());
             v.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
             v.addSelectionChangedListener(new class ISelectionChangedListener {
@@ -132,15 +131,15 @@ public class Snippet047WizardWithLongRunningOperation {
 
             });
 
-            mt.barContainer = new Composite(mt.comp, DWT.NONE);
+            mt.barContainer = new Composite(mt.comp, SWT.NONE);
             mt.barContainer.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
             mt.barContainer.setLayout(new GridLayout(2, false));
 
-            Label l = new Label(mt.barContainer, DWT.NONE);
+            Label l = new Label(mt.barContainer, SWT.NONE);
             l.setText("Loading Data");
 
             mt.bar = new ProgressBar(mt.barContainer,
-                    (loadingType == 1) ? DWT.INDETERMINATE : DWT.NONE);
+                    (loadingType == 1) ? SWT.INDETERMINATE : SWT.NONE);
             mt.bar.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
             if (loadingType == 2) {
@@ -164,7 +163,7 @@ public class Snippet047WizardWithLongRunningOperation {
             private void threadWork(){
                 if (loadingType == 1) {
                     try {
-                        Thread.sleep(10.000);
+                        Thread.sleep(10_000);
                         ArrayList ms = new ArrayList();
                         for (int i = 0; i < 10; i++) {
                             ms.add(new MyModel(i));
@@ -202,7 +201,7 @@ public class Snippet047WizardWithLongRunningOperation {
                         }, j ));
 
                         try {
-                            Thread.sleep(1.000);
+                            Thread.sleep(1_000);
                         } catch (InterruptedException e) {
                             // TODO Auto-generated catch block
                             ExceptionPrintStackTrace(e);
@@ -247,7 +246,7 @@ public class Snippet047WizardWithLongRunningOperation {
         shell = new Shell(display);
         shell.setLayout(new FillLayout());
 
-        Button b = new Button(shell, DWT.PUSH);
+        Button b = new Button(shell, SWT.PUSH);
         b.setText("Load in one Chunk");
         b.addSelectionListener(new class SelectionAdapter {
 
@@ -258,7 +257,7 @@ public class Snippet047WizardWithLongRunningOperation {
 
         });
 
-        b = new Button(shell, DWT.PUSH);
+        b = new Button(shell, SWT.PUSH);
         b.setText("Load Item by Item");
         b.addSelectionListener(new class SelectionAdapter {
 

@@ -11,18 +11,18 @@
  *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
  *******************************************************************************/
 
-module snippets.viewers.Snippet047VirtualLazyTreeViewer;
+module org.eclipse.jface.snippets.viewers.Snippet047VirtualLazyTreeViewer;
 
-import dwtx.jface.viewers.ILazyTreeContentProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.TreeViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.DWT;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
+import org.eclipse.jface.viewers.ILazyTreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 
 import tango.util.Convert;
 import tango.util.container.LinkedList;
@@ -77,7 +77,7 @@ public class Snippet047VirtualLazyTreeViewer {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ILazyTreeContentProvider#getParent(java.lang.Object)
+         * @see org.eclipse.jface.viewers.ILazyTreeContentProvider#getParent(java.lang.Object)
          */
         public Object getParent(Object element) {
             if (cast(LeafNode)element)
@@ -88,7 +88,7 @@ public class Snippet047VirtualLazyTreeViewer {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ILazyTreeContentProvider#updateChildCount(java.lang.Object,
+         * @see org.eclipse.jface.viewers.ILazyTreeContentProvider#updateChildCount(java.lang.Object,
          *      int)
          */
         public void updateChildCount(Object element, int currentChildCount) {
@@ -107,7 +107,7 @@ public class Snippet047VirtualLazyTreeViewer {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.ILazyTreeContentProvider#updateElement(java.lang.Object,
+         * @see org.eclipse.jface.viewers.ILazyTreeContentProvider#updateElement(java.lang.Object,
          *      int)
          */
         public void updateElement(Object parent, int index) {
@@ -162,7 +162,7 @@ public class Snippet047VirtualLazyTreeViewer {
     }
 
     public this(Shell shell) {
-        final TreeViewer v = new TreeViewer(shell, DWT.VIRTUAL | DWT.BORDER);
+        final TreeViewer v = new TreeViewer(shell, SWT.VIRTUAL | SWT.BORDER);
         v.setLabelProvider(new LabelProvider());
         v.setContentProvider(new MyContentProvider(v));
         v.setUseHashlookup(true);

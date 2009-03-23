@@ -12,21 +12,21 @@
 
 module org.eclipse.jface.snippets.viewers.Snippet011CustomTooltips;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 
-import dwtx.jface.viewers.CellLabelProvider;
-import dwtx.jface.viewers.ColumnViewerToolTipSupport;
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.TableViewer;
-import dwtx.jface.viewers.TableViewerColumn;
-import dwtx.jface.viewers.Viewer;
-import dwtx.jface.viewers.ViewerCell;
-import dwtx.jface.window.ToolTip;
-import dwt.DWT;
-import dwt.graphics.Point;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
+import org.eclipse.jface.viewers.CellLabelProvider;
+import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.jface.window.ToolTip;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * Explore New API: JFace custom tooltips drawing.
@@ -60,7 +60,7 @@ public class Snippet011CustomTooltips {
         Shell shell = new Shell(display);
         shell.setLayout(new FillLayout());
 
-        TableViewer v = new TableViewer(shell, DWT.FULL_SELECTION);
+        TableViewer v = new TableViewer(shell, SWT.FULL_SELECTION);
         v.getTable().setLinesVisible(true);
         v.getTable().setHeaderVisible(true);
         v.setContentProvider(new MyContentProvider());
@@ -90,7 +90,7 @@ public class Snippet011CustomTooltips {
             }
         };
 
-        TableViewerColumn column = new TableViewerColumn(v, DWT.NONE);
+        TableViewerColumn column = new TableViewerColumn(v, SWT.NONE);
         column.setLabelProvider(labelProvider);
         column.getColumn().setText("Column 1");
         column.getColumn().setWidth(100);

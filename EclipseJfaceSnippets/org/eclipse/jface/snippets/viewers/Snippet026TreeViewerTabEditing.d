@@ -11,35 +11,35 @@
  *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
  *******************************************************************************/
 
-module snippets.viewers.Snippet026TreeViewerTabEditing;
+module org.eclipse.jface.snippets.viewers.Snippet026TreeViewerTabEditing;
 
 
-import dwtx.jface.viewers.CellEditor;
-import dwtx.jface.viewers.ColumnLabelProvider;
-import dwtx.jface.viewers.ColumnViewerEditor;
-import dwtx.jface.viewers.ColumnViewer;
-import dwtx.jface.viewers.ColumnViewerEditorActivationStrategy;
-import dwtx.jface.viewers.EditingSupport;
-import dwtx.jface.viewers.ColumnViewerEditorActivationEvent;
-import dwtx.jface.viewers.FocusCellOwnerDrawHighlighter;
-import dwtx.jface.viewers.ITreeContentProvider;
-import dwtx.jface.viewers.TextCellEditor;
-import dwtx.jface.viewers.TreePath;
-import dwtx.jface.viewers.TreeViewerFocusCellManager;
-import dwtx.jface.viewers.TreeViewerEditor;
-import dwtx.jface.viewers.TreeViewer;
-import dwtx.jface.viewers.TreeViewerColumn;
-import dwtx.jface.viewers.Viewer;
-import dwt.DWT;
-import dwt.events.SelectionEvent;
-import dwt.events.SelectionListener;
-import dwt.layout.FillLayout;
-import dwt.widgets.Button;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
+import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.ColumnViewerEditor;
+import org.eclipse.jface.viewers.ColumnViewer;
+import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
+import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
+import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.TextCellEditor;
+import org.eclipse.jface.viewers.TreePath;
+import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
+import org.eclipse.jface.viewers.TreeViewerEditor;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
-import dwt.dwthelper.utils;
-import dwtx.dwtxhelper.Collection;
+import java.lang.all;
+import java.util.ArrayList;
 
 import tango.util.Convert;
 
@@ -69,10 +69,10 @@ void main(String[] args) {
  */
 public class Snippet026TreeViewerTabEditing {
     public this(Shell shell) {
-        Button b = new Button(shell,DWT.PUSH);
+        Button b = new Button(shell,SWT.PUSH);
         b.setText("Remove column");
-        final TreeViewer v = new TreeViewer(shell, DWT.BORDER
-                | DWT.FULL_SELECTION);
+        final TreeViewer v = new TreeViewer(shell, SWT.BORDER
+                | SWT.FULL_SELECTION);
         v.getTree().setLinesVisible(true);
         v.getTree().setHeaderVisible(true);
         b.addSelectionListener(new class(v) SelectionListener {
@@ -101,7 +101,7 @@ public class Snippet026TreeViewerTabEditing {
                     ColumnViewerEditorActivationEvent event) {
                 return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
                         || event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
-                        || (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == DWT.CR)
+                        || (event.eventType == ColumnViewerEditorActivationEvent.KEY_PRESSED && event.keyCode == SWT.CR)
                         || event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC;
             }
         };
@@ -112,7 +112,7 @@ public class Snippet026TreeViewerTabEditing {
 
         final TextCellEditor textCellEditor = new TextCellEditor(v.getTree());
 
-        TreeViewerColumn column = new TreeViewerColumn(v, DWT.NONE);
+        TreeViewerColumn column = new TreeViewerColumn(v, SWT.NONE);
         column.getColumn().setWidth(200);
         column.getColumn().setMoveable(true);
         column.getColumn().setText("Column 1");
@@ -146,7 +146,7 @@ public class Snippet026TreeViewerTabEditing {
             }
         });
 
-        column = new TreeViewerColumn(v, DWT.NONE);
+        column = new TreeViewerColumn(v, SWT.NONE);
         column.getColumn().setWidth(200);
         column.getColumn().setMoveable(true);
         column.getColumn().setText("Column 2");
@@ -180,7 +180,7 @@ public class Snippet026TreeViewerTabEditing {
             }
         });
 
-        column = new TreeViewerColumn(v, DWT.NONE);
+        column = new TreeViewerColumn(v, SWT.NONE);
         column.getColumn().setWidth(200);
         column.getColumn().setMoveable(true);
         column.getColumn().setText("Column 3");

@@ -11,29 +11,29 @@
  * Port to the D programming language:
  *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
  *******************************************************************************/
-module snippets.viewers.Snippet010OwnerDraw.d;
+module org.eclipse.jface.snippets.viewers.Snippet010OwnerDraw.d;
 
-import dwtx.jface.resource.JFaceResources;
-import dwtx.jface.viewers.Viewer;
-import dwtx.jface.viewers.ColumnPixelData;
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.OwnerDrawLabelProvider;
-import dwtx.jface.viewers.StructuredSelection;
-import dwtx.jface.viewers.TableLayout;
-import dwtx.jface.viewers.TableViewer;
-import dwt.DWT;
-import dwt.graphics.Rectangle;
-import dwt.graphics.TextLayout;
-import dwt.graphics.TextStyle;
-import dwt.layout.GridData;
-import dwt.layout.GridLayout;
-import dwt.widgets.Composite;
-import dwt.widgets.Display;
-import dwt.widgets.Event;
-import dwt.widgets.Shell;
-import dwt.widgets.TableColumn;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ColumnPixelData;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.OwnerDrawLabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TableLayout;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.graphics.TextLayout;
+import org.eclipse.swt.graphics.TextStyle;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TableColumn;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 
 void main(String[] args) {
     Snippet010OwnerDraw.main(args);
@@ -44,7 +44,7 @@ public class Snippet010OwnerDraw {
     public static void main(String[] args) {
 
         Display display = new Display();
-        Shell shell = new Shell(display, DWT.CLOSE);
+        Shell shell = new Shell(display, SWT.CLOSE);
         shell.setSize(400, 400);
         shell.setLayout(new GridLayout());
 
@@ -126,7 +126,7 @@ public class Snippet010OwnerDraw {
          */
         protected void drawFlag(Event event) {
             event.gc.setBackground(viewer.getControl().getDisplay()
-                    .getSystemColor(DWT.COLOR_BLUE));
+                    .getSystemColor(SWT.COLOR_BLUE));
 
             Rectangle bounds = event.getBounds();
             bounds.width += 100;
@@ -158,13 +158,13 @@ public class Snippet010OwnerDraw {
 
             TextStyle plain = new TextStyle(JFaceResources
                     .getFont(JFaceResources.DEFAULT_FONT), display
-                    .getSystemColor(DWT.COLOR_LIST_FOREGROUND), display
-                    .getSystemColor(DWT.COLOR_LIST_BACKGROUND));
+                    .getSystemColor(SWT.COLOR_LIST_FOREGROUND), display
+                    .getSystemColor(SWT.COLOR_LIST_BACKGROUND));
 
             TextStyle italic = new TextStyle(JFaceResources.getFontRegistry()
                     .getItalic(JFaceResources.DEFAULT_FONT), display
-                    .getSystemColor(DWT.COLOR_BLUE), display
-                    .getSystemColor(DWT.COLOR_LIST_BACKGROUND));
+                    .getSystemColor(SWT.COLOR_BLUE), display
+                    .getSystemColor(SWT.COLOR_LIST_BACKGROUND));
 
             layout.setStyle(plain, 0, name.length - 1);
             layout.setStyle(italic, name.length, buffer.length - 1);
@@ -217,7 +217,7 @@ public class Snippet010OwnerDraw {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.tests.viewers.OwnerDrawExample.CountryEntry#drawFlag(dwt.widgets.Event)
+         * @see org.eclipse.jface.tests.viewers.OwnerDrawExample.CountryEntry#drawFlag(org.eclipse.swt.widgets.Event)
          */
         protected void drawFlag(Event event) {
 
@@ -228,19 +228,19 @@ public class Snippet010OwnerDraw {
                     stripeHeight);
 
             event.gc.setBackground(viewer.getControl().getDisplay()
-                    .getSystemColor(DWT.COLOR_BLACK));
+                    .getSystemColor(SWT.COLOR_BLACK));
             event.gc.fillRectangle(stripe);
 
             stripe.y += stripeHeight;
 
             event.gc.setBackground(viewer.getControl().getDisplay()
-                    .getSystemColor(DWT.COLOR_RED));
+                    .getSystemColor(SWT.COLOR_RED));
             event.gc.fillRectangle(stripe);
 
             stripe.y += stripeHeight;
 
             event.gc.setBackground(viewer.getControl().getDisplay()
-                    .getSystemColor(DWT.COLOR_YELLOW));
+                    .getSystemColor(SWT.COLOR_YELLOW));
             event.gc.fillRectangle(stripe);
 
         }
@@ -256,7 +256,7 @@ public class Snippet010OwnerDraw {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.tests.viewers.OwnerDrawExample.CountryEntry#drawFlag(dwt.widgets.Event)
+         * @see org.eclipse.jface.tests.viewers.OwnerDrawExample.CountryEntry#drawFlag(org.eclipse.swt.widgets.Event)
          */
         protected void drawFlag(Event event) {
 
@@ -267,19 +267,19 @@ public class Snippet010OwnerDraw {
                     stripeHeight);
 
             event.gc.setBackground(viewer.getControl().getDisplay()
-                    .getSystemColor(DWT.COLOR_RED));
+                    .getSystemColor(SWT.COLOR_RED));
             event.gc.fillRectangle(stripe);
 
             stripe.y += stripeHeight;
 
             event.gc.setBackground(viewer.getControl().getDisplay()
-                    .getSystemColor(DWT.COLOR_WHITE));
+                    .getSystemColor(SWT.COLOR_WHITE));
             event.gc.fillRectangle(stripe);
 
             stripe.y += stripeHeight;
 
             event.gc.setBackground(viewer.getControl().getDisplay()
-                    .getSystemColor(DWT.COLOR_RED));
+                    .getSystemColor(SWT.COLOR_RED));
             event.gc.fillRectangle(stripe);
 
         }
@@ -293,7 +293,7 @@ public class Snippet010OwnerDraw {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.tests.viewers.OwnerDrawExample.CountryEntry#drawFlag(dwt.widgets.Event)
+         * @see org.eclipse.jface.tests.viewers.OwnerDrawExample.CountryEntry#drawFlag(org.eclipse.swt.widgets.Event)
          */
         protected void drawFlag(Event event) {
 
@@ -301,7 +301,7 @@ public class Snippet010OwnerDraw {
             bounds.width += 100;
 
             event.gc.setBackground(viewer.getControl().getDisplay()
-                    .getSystemColor(DWT.COLOR_RED));
+                    .getSystemColor(SWT.COLOR_RED));
             event.gc.fillRectangle(new Rectangle(bounds.width / 2 + bounds.x
                     - 5, bounds.y, 10, bounds.height));
             event.gc.fillRectangle(new Rectangle(bounds.x, bounds.height / 2
@@ -324,16 +324,16 @@ public class Snippet010OwnerDraw {
     /*
      * (non-Javadoc)
      *
-     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(dwt.widgets.Composite)
+     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
      */
     public void createPartControl(Composite parent) {
-        viewer = new TableViewer(parent, DWT.FULL_SELECTION);
+        viewer = new TableViewer(parent, SWT.FULL_SELECTION);
 
         viewer.setContentProvider(new class() IStructuredContentProvider {
             /*
              * (non-Javadoc)
              *
-             * @see dwtx.jface.viewers.IContentProvider#dispose()
+             * @see org.eclipse.jface.viewers.IContentProvider#dispose()
              */
             public void dispose() {
             };
@@ -341,7 +341,7 @@ public class Snippet010OwnerDraw {
             /*
              * (non-Javadoc)
              *
-             * @see dwtx.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+             * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
              */
             public Object[] getElements(Object inputElement) {
                 return (cast(Snippet010OwnerDraw) inputElement).entries;
@@ -350,7 +350,7 @@ public class Snippet010OwnerDraw {
             /*
              * (non-Javadoc)
              *
-             * @see dwtx.jface.viewers.IContentProvider#inputChanged(dwtx.jface.viewers.Viewer,
+             * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
              *      java.lang.Object, java.lang.Object)
              */
             public void inputChanged(Viewer viewer,
@@ -374,7 +374,7 @@ public class Snippet010OwnerDraw {
             /*
              * (non-Javadoc)
              *
-             * @see dwtx.jface.viewers.OwnerDrawLabelProvider#paint(dwt.widgets.Event,
+             * @see org.eclipse.jface.viewers.OwnerDrawLabelProvider#paint(org.eclipse.swt.widgets.Event,
              *      java.lang.Object)
              */
             protected void paint(Event event, Object element) {
@@ -404,7 +404,7 @@ public class Snippet010OwnerDraw {
         viewer.getTable().setLinesVisible(true);
 
         for (int i = 0; i < COLUMN_COUNT; i++) {
-            TableColumn tc = new TableColumn(viewer.getTable(), DWT.NONE, i);
+            TableColumn tc = new TableColumn(viewer.getTable(), SWT.NONE, i);
             layout.addColumnData(new ColumnPixelData(100));
             tc.setText(getTitleFor(i));
         }

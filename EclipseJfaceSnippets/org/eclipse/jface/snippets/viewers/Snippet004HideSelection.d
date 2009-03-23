@@ -11,23 +11,23 @@
  *     wbaxter at gmail dot com
  *******************************************************************************/
 
-module snippets.viewers.Snippet004HideSelection;
+module org.eclipse.jface.snippets.viewers.Snippet004HideSelection;
 
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.StructuredSelection;
-import dwtx.jface.viewers.TableViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.DWT;
-import dwt.events.MouseAdapter;
-import dwt.events.MouseEvent;
-import dwt.graphics.Point;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
-import dwt.dwthelper.utils;
-import dwtx.dwtxhelper.Collection;
+import java.lang.all;
+import java.util.ArrayList;
 
 import tango.util.Convert;
 
@@ -75,7 +75,7 @@ public class Snippet004HideSelection {
 	}
 
 	public this(Shell shell) {
-		final TableViewer v = new TableViewer(shell,DWT.BORDER|DWT.FULL_SELECTION);
+		final TableViewer v = new TableViewer(shell,SWT.BORDER|SWT.FULL_SELECTION);
 		v.setLabelProvider(new LabelProvider());
 		v.setContentProvider(new MyContentProvider());
 		ArrayList model = createModel();

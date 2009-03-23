@@ -9,26 +9,26 @@
  *     Tom Schindl - initial API and implementation
  *******************************************************************************/
 
-module dwtx.jface.snippets.window.Snippet031TableStaticTooltip;
+module org.eclipse.jface.snippets.window.Snippet031TableStaticTooltip;
 
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.ITableLabelProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.TableViewer;
-import dwtx.jface.viewers.Viewer;
-import dwtx.jface.window.DefaultToolTip;
-import dwtx.jface.window.ToolTip;
-import dwt.DWT;
-import dwt.graphics.Color;
-import dwt.graphics.GC;
-import dwt.graphics.Image;
-import dwt.graphics.Point;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
-import dwt.widgets.TableColumn;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.DefaultToolTip;
+import org.eclipse.jface.window.ToolTip;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TableColumn;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 import tango.text.convert.Format;
 
 
@@ -47,7 +47,7 @@ public class Snippet031TableStaticTooltip {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+         * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
          */
         public Object[] getElements(Object inputElement) {
             return arrayFromObject!(MyModel)( inputElement );
@@ -56,7 +56,7 @@ public class Snippet031TableStaticTooltip {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IContentProvider#dispose()
+         * @see org.eclipse.jface.viewers.IContentProvider#dispose()
          */
         public void dispose() {
 
@@ -65,7 +65,7 @@ public class Snippet031TableStaticTooltip {
         /*
          * (non-Javadoc)
          *
-         * @see dwtx.jface.viewers.IContentProvider#inputChanged(dwtx.jface.viewers.Viewer,
+         * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
          *      java.lang.Object, java.lang.Object)
          */
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
@@ -117,16 +117,16 @@ public class Snippet031TableStaticTooltip {
 
     TableViewer v;
     public this(Shell shell) {
-        v = new TableViewer(shell, DWT.BORDER
-                | DWT.FULL_SELECTION);
+        v = new TableViewer(shell, SWT.BORDER
+                | SWT.FULL_SELECTION);
         v.setLabelProvider(new MyLabelProvider());
         v.setContentProvider(new MyContentProvider());
 
-        TableColumn column = new TableColumn(v.getTable(), DWT.NONE);
+        TableColumn column = new TableColumn(v.getTable(), SWT.NONE);
         column.setWidth(200);
         column.setText("Column 1");
 
-        column = new TableColumn(v.getTable(), DWT.NONE);
+        column = new TableColumn(v.getTable(), SWT.NONE);
         column.setWidth(200);
         column.setText("Column 2");
 
@@ -139,7 +139,7 @@ public class Snippet031TableStaticTooltip {
                 ToolTip.NO_RECREATE, false);
         toolTip.setText("Hello World\nHello World");
         toolTip.setBackgroundColor(v.getTable().getDisplay().getSystemColor(
-                DWT.COLOR_RED));
+                SWT.COLOR_RED));
         toolTip.setShift(new Point(10, 5));
     }
 

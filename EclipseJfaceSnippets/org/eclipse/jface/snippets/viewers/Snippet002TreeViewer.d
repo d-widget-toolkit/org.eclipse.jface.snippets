@@ -11,18 +11,18 @@
  *     wbaxter at gmail dot com
  *******************************************************************************/
 
-module snippets.viewers.Snippet002TreeViewer;
+module org.eclipse.jface.snippets.viewers.Snippet002TreeViewer;
 
-import dwt.DWT;
-import dwtx.jface.viewers.ITreeContentProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.TreeViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
+import org.eclipse.swt.SWT;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 
 import tango.util.Convert;
 

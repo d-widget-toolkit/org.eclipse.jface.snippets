@@ -11,23 +11,23 @@
  *     wbaxter at gmail dot com
  *******************************************************************************/
 
-module snippets.viewers.Snippet005TreeCustomMenu;
+module org.eclipse.jface.snippets.viewers.Snippet005TreeCustomMenu;
 
-import dwtx.jface.action.Action;
-import dwtx.jface.action.IMenuListener;
-import dwtx.jface.action.IMenuManager;
-import dwtx.jface.action.MenuManager;
-import dwtx.jface.viewers.IStructuredSelection;
-import dwtx.jface.viewers.ITreeContentProvider;
-import dwtx.jface.viewers.LabelProvider;
-import dwtx.jface.viewers.TreeViewer;
-import dwtx.jface.viewers.Viewer;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
-import dwt.DWT;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.SWT;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 
 import tango.util.Convert;
 import tango.io.Stdout;

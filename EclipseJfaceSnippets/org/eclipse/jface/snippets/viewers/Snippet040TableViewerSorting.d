@@ -10,27 +10,27 @@
  * Port to the D programming language:
  *     yidabu at gmail dot com  ( D China http://www.d-programming-language-china.org/ )
  *******************************************************************************/
-module snippets.viewers.Snippet040TableViewerSorting;
+module org.eclipse.jface.snippets.viewers.Snippet040TableViewerSorting;
 
 // http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.jface.snippets/Eclipse%20JFace%20Snippets/org/eclipse/jface/snippets/viewers/Snippet040TableViewerSorting.java?view=markup
 
-import dwtx.jface.viewers.CellEditor;
-import dwtx.jface.viewers.ColumnLabelProvider;
-import dwtx.jface.viewers.ColumnViewer;
-import dwtx.jface.viewers.EditingSupport;
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.TableViewer;
-import dwtx.jface.viewers.TableViewerColumn;
-import dwtx.jface.viewers.TextCellEditor;
-import dwtx.jface.viewers.Viewer;
-import dwtx.jface.viewers.ViewerComparator;
-import dwt.DWT;
-import dwt.events.SelectionAdapter;
-import dwt.events.SelectionEvent;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
-import dwt.dwthelper.utils;
+import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.ColumnViewer;
+import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.jface.viewers.TextCellEditor;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerComparator;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import java.lang.all;
 
 version(JIVE) import jive.stacktrace;
 
@@ -139,16 +139,16 @@ void main(String[] args) {
         public void setSorter(ColumnViewerSorter sorter, int direction) {
             if( direction is NONE ) {
                 column.getColumn().getParent().setSortColumn(null);
-                column.getColumn().getParent().setSortDirection(DWT.NONE);
+                column.getColumn().getParent().setSortDirection(SWT.NONE);
                 viewer.setComparator(null);
             } else {
                 column.getColumn().getParent().setSortColumn(column.getColumn());
                 sorter.direction = direction;
 
                 if( direction is ASC ) {
-                    column.getColumn().getParent().setSortDirection(DWT.DOWN);
+                    column.getColumn().getParent().setSortDirection(SWT.DOWN);
                 } else {
-                    column.getColumn().getParent().setSortDirection(DWT.UP);
+                    column.getColumn().getParent().setSortDirection(SWT.UP);
                 }
 
                 if( viewer.getComparator() is sorter ) {
@@ -171,10 +171,10 @@ public class Snippet040TableViewerSorting {
 
 
     public this(Shell shell) {
-        TableViewer v = new TableViewer(shell, DWT.BORDER | DWT.FULL_SELECTION);
+        TableViewer v = new TableViewer(shell, SWT.BORDER | SWT.FULL_SELECTION);
         v.setContentProvider(new MyContentProvider());
 
-        TableViewerColumn column = new TableViewerColumn(v, DWT.NONE);
+        TableViewerColumn column = new TableViewerColumn(v, SWT.NONE);
         column.getColumn().setWidth(200);
         column.getColumn().setText("Givenname");
         column.getColumn().setMoveable(true);
@@ -207,7 +207,7 @@ public class Snippet040TableViewerSorting {
             }
         };
 
-        column = new TableViewerColumn(v, DWT.NONE);
+        column = new TableViewerColumn(v, SWT.NONE);
         column.getColumn().setWidth(200);
         column.getColumn().setText("Surname");
         column.getColumn().setMoveable(true);
@@ -240,7 +240,7 @@ public class Snippet040TableViewerSorting {
             }
         };
 
-        column = new TableViewerColumn(v, DWT.NONE);
+        column = new TableViewerColumn(v, SWT.NONE);
         column.getColumn().setWidth(200);
         column.getColumn().setText("E-Mail");
         column.getColumn().setMoveable(true);

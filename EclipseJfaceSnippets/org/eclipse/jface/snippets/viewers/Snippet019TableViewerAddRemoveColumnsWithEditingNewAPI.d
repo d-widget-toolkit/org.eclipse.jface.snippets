@@ -9,31 +9,31 @@
  *     Tom Schindl - initial API and implementation
  *******************************************************************************/
 
-module snippets.viewers.Snippet019TableViewerAddRemoveColumnsWithEditingNewAPI;
+module org.eclipse.jface.snippets.viewers.Snippet019TableViewerAddRemoveColumnsWithEditingNewAPI;
 
 
-import dwtx.jface.action.Action;
-import dwtx.jface.action.IMenuListener;
-import dwtx.jface.action.IMenuManager;
-import dwtx.jface.action.MenuManager;
-import dwtx.jface.internal.ConfigureColumnsDialog;
-import dwtx.jface.viewers.CellEditor;
-import dwtx.jface.viewers.ColumnLabelProvider;
-import dwtx.jface.viewers.EditingSupport;
-import dwtx.jface.viewers.IStructuredContentProvider;
-import dwtx.jface.viewers.TableViewer;
-import dwtx.jface.viewers.TableViewerColumn;
-import dwtx.jface.viewers.TextCellEditor;
-import dwtx.jface.viewers.Viewer;
-import dwtx.jface.window.SameShellProvider;
-import dwt.DWT;
-import dwt.events.MouseAdapter;
-import dwt.events.MouseEvent;
-import dwt.layout.FillLayout;
-import dwt.widgets.Display;
-import dwt.widgets.Shell;
-import dwt.dwthelper.utils;
-import dwtx.jface.window.IShellProvider;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.internal.ConfigureColumnsDialog;
+import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.EditingSupport;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TableViewerColumn;
+import org.eclipse.jface.viewers.TextCellEditor;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.SameShellProvider;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import java.lang.all;
+import org.eclipse.jface.window.IShellProvider;
 
 /**
  * Explore the new API added in 3.3 and see how easily you can create reusable
@@ -176,10 +176,10 @@ public class Snippet019TableViewerAddRemoveColumnsWithEditingNewAPI {
     private TableViewerColumn column;
     TableViewer v;
     public this(Shell shell) {
-        v = new TableViewer(shell, DWT.BORDER
-                | DWT.FULL_SELECTION);
+        v = new TableViewer(shell, SWT.BORDER
+                | SWT.FULL_SELECTION);
 
-        TableViewerColumn column = new TableViewerColumn(v,DWT.NONE);
+        TableViewerColumn column = new TableViewerColumn(v,SWT.NONE);
         column.setLabelProvider(new GivenNameLabelProvider());
         column.setEditingSupport(new GivenNameEditing(v));
 
@@ -187,7 +187,7 @@ public class Snippet019TableViewerAddRemoveColumnsWithEditingNewAPI {
         column.getColumn().setText("Givenname");
         column.getColumn().setMoveable(true);
 
-        column = new TableViewerColumn(v,DWT.NONE);
+        column = new TableViewerColumn(v,SWT.NONE);
         column.setLabelProvider(new SurNameLabelProvider());
         column.setEditingSupport(new SurNameEditing(v));
         column.getColumn().setWidth(200);
@@ -228,7 +228,7 @@ public class Snippet019TableViewerAddRemoveColumnsWithEditingNewAPI {
     }
 
     private void addEmailColumn(int columnIndex) {
-        column = new TableViewerColumn(v, DWT.NONE, columnIndex);
+        column = new TableViewerColumn(v, SWT.NONE, columnIndex);
         column.setLabelProvider(new EmailLabelProvider());
         column.setEditingSupport(new EmailEditing(v));
         column.getColumn().setText("E-Mail");

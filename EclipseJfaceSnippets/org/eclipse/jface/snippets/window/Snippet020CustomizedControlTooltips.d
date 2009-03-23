@@ -9,38 +9,38 @@
  *     Tom Schindl - initial API and implementation
  *******************************************************************************/
 
-module dwtx.jface.snippets.window.Snippet020CustomizedControlTooltips;
+module org.eclipse.jface.snippets.window.Snippet020CustomizedControlTooltips;
 
 
-import dwtx.jface.resource.ImageDescriptor;
-import dwtx.jface.resource.JFaceResources;
-import dwtx.jface.util.Policy;
-import dwtx.jface.window.DefaultToolTip;
-import dwtx.jface.window.ToolTip;
-import dwt.DWT;
-import dwt.events.MouseAdapter;
-import dwt.events.MouseEvent;
-import dwt.events.SelectionAdapter;
-import dwt.events.SelectionEvent;
-import dwt.events.SelectionListener;
-import dwt.graphics.Point;
-import dwt.graphics.RGB;
-import dwt.layout.FillLayout;
-import dwt.layout.GridData;
-import dwt.layout.GridLayout;
-import dwt.layout.RowLayout;
-import dwt.widgets.Button;
-import dwt.widgets.Composite;
-import dwt.widgets.Control;
-import dwt.widgets.Display;
-import dwt.widgets.Event;
-import dwt.widgets.Label;
-import dwt.widgets.Link;
-import dwt.widgets.MessageBox;
-import dwt.widgets.Shell;
-import dwt.widgets.Text;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.util.Policy;
+import org.eclipse.jface.window.DefaultToolTip;
+import org.eclipse.jface.window.ToolTip;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Link;
+import org.eclipse.swt.widgets.MessageBox;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 
-import dwt.dwthelper.utils;
+import java.lang.all;
 version(JIVE) import jive.stacktrace;
 
 /**
@@ -72,7 +72,7 @@ public class Snippet020CustomizedControlTooltips {
 
         protected Composite createToolTipContentArea(Event event,
                 Composite parent) {
-            Composite comp = new Composite(parent,DWT.NONE);
+            Composite comp = new Composite(parent,SWT.NONE);
 
             GridLayout gl = new GridLayout(1,false);
             gl.marginBottom=0;
@@ -84,8 +84,8 @@ public class Snippet020CustomizedControlTooltips {
             gl.verticalSpacing=1;
             comp.setLayout(gl);
 
-            Composite topArea = new Composite(comp,DWT.NONE);
-            GridData data = new GridData(DWT.FILL,DWT.FILL,true,false);
+            Composite topArea = new Composite(comp,SWT.NONE);
+            GridData data = new GridData(SWT.FILL,SWT.FILL,true,false);
             data.widthHint=200;
             topArea.setLayoutData(data);
             topArea.setBackground(JFaceResources.getColorRegistry().get(HEADER_BG_COLOR));
@@ -100,14 +100,14 @@ public class Snippet020CustomizedControlTooltips {
 
             topArea.setLayout(gl);
 
-            Label l = new Label(topArea,DWT.NONE);
+            Label l = new Label(topArea,SWT.NONE);
             l.setText(headerText);
             l.setBackground(JFaceResources.getColorRegistry().get(HEADER_BG_COLOR));
             l.setFont(JFaceResources.getFontRegistry().get(HEADER_FONT));
             l.setForeground(JFaceResources.getColorRegistry().get(HEADER_FG_COLOR));
             l.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-            Composite iconComp = new Composite(topArea,DWT.NONE);
+            Composite iconComp = new Composite(topArea,SWT.NONE);
             iconComp.setLayoutData(new GridData());
             iconComp.setLayout(new GridLayout(2,false));
             iconComp.setBackground(JFaceResources.getColorRegistry().get(HEADER_BG_COLOR));
@@ -121,7 +121,7 @@ public class Snippet020CustomizedControlTooltips {
             gl.marginRight=0;
             iconComp.setLayout(gl);
 
-            Label helpIcon = new Label(iconComp,DWT.NONE);
+            Label helpIcon = new Label(iconComp,SWT.NONE);
             helpIcon.setBackground(JFaceResources.getColorRegistry().get(HEADER_BG_COLOR));
             helpIcon.setImage(JFaceResources.getImage(HEADER_HELP_ICON));
             helpIcon.addMouseListener(new class MouseAdapter {
@@ -133,7 +133,7 @@ public class Snippet020CustomizedControlTooltips {
             });
 
 
-            Label closeIcon = new Label(iconComp,DWT.NONE);
+            Label closeIcon = new Label(iconComp,SWT.NONE);
             closeIcon.setBackground(JFaceResources.getColorRegistry().get(HEADER_BG_COLOR));
             closeIcon.setImage(JFaceResources.getImage(HEADER_CLOSE_ICON));
             closeIcon.addMouseListener(new class MouseAdapter {
@@ -150,7 +150,7 @@ public class Snippet020CustomizedControlTooltips {
         }
 
         protected Composite createContentArea(Composite parent) {
-            return new Composite(parent,DWT.NONE);
+            return new Composite(parent,SWT.NONE);
         }
 
         protected void openHelp() {
@@ -164,13 +164,13 @@ public class Snippet020CustomizedControlTooltips {
         }
         protected Composite createContentArea(Composite parent) {
             Composite comp = super.createContentArea(parent);
-            comp.setBackground(parent.getDisplay().getSystemColor(DWT.COLOR_INFO_BACKGROUND));
+            comp.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_INFO_BACKGROUND));
             FillLayout layout = new FillLayout();
             layout.marginWidth=5;
             comp.setLayout(layout);
-            Link l = new Link(comp,DWT.NONE);
+            Link l = new Link(comp,SWT.NONE);
             l.setText("This a custom tooltip you can: \n- pop up any control you want\n- define delays\n - ... \nGo and get Eclipse M4 from <a>http://www.eclipse.org</a>");
-            l.setBackground(parent.getDisplay().getSystemColor(DWT.COLOR_INFO_BACKGROUND));
+            l.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_INFO_BACKGROUND));
             l.addSelectionListener(new class SelectionAdapter {
                 public void widgetSelected(SelectionEvent e) {
                     openURL();
@@ -180,14 +180,14 @@ public class Snippet020CustomizedControlTooltips {
         }
 
         protected void openURL() {
-            MessageBox box = new MessageBox(parent,DWT.ICON_INFORMATION);
+            MessageBox box = new MessageBox(parent,SWT.ICON_INFORMATION);
             box.setText("Eclipse.org");
             box.setMessage("Here is where we'd open the URL.");
             box.open();
         }
 
         protected void openHelp() {
-            MessageBox box = new MessageBox(parent,DWT.ICON_INFORMATION);
+            MessageBox box = new MessageBox(parent,SWT.ICON_INFORMATION);
             box.setText("Info");
             box.setMessage("Here is where we'd show some information.");
             box.open();
@@ -206,7 +206,7 @@ public class Snippet020CustomizedControlTooltips {
         JFaceResources.getImageRegistry().put(MyToolTip.HEADER_CLOSE_ICON,ImageDescriptor.createFromFile(getImportData!("jface.snippets.showerr_tsk.gif")));
         JFaceResources.getImageRegistry().put(MyToolTip.HEADER_HELP_ICON,ImageDescriptor.createFromFile(getImportData!("jface.snippets.linkto_help.gif")));
 
-        Text text = new Text(parent,DWT.BORDER);
+        Text text = new Text(parent,SWT.BORDER);
         text.setText("Hello World");
 
         MyToolTip myTooltipLabel = new MyToolTip2(text);
@@ -214,18 +214,18 @@ public class Snippet020CustomizedControlTooltips {
         myTooltipLabel.setHideOnMouseDown(false);
         myTooltipLabel.activate();
 
-        text = new Text(parent,DWT.BORDER);
+        text = new Text(parent,SWT.BORDER);
         text.setText("Hello World");
         DefaultToolTip toolTip = new DefaultToolTip(text);
         toolTip.setText("Hello World\nHello World");
-        toolTip.setBackgroundColor(parent.getDisplay().getSystemColor(DWT.COLOR_RED));
+        toolTip.setBackgroundColor(parent.getDisplay().getSystemColor(SWT.COLOR_RED));
 
-        Button b = new Button(parent,DWT.PUSH);
+        Button b = new Button(parent,SWT.PUSH);
         b.setText("Popup on press");
 
         toolTipDelayed = new DefaultToolTip(b,ToolTip.RECREATE,true);
         toolTipDelayed.setText("Hello World\nHello World");
-        toolTipDelayed.setBackgroundColor(parent.getDisplay().getSystemColor(DWT.COLOR_RED));
+        toolTipDelayed.setBackgroundColor(parent.getDisplay().getSystemColor(SWT.COLOR_RED));
         toolTipDelayed.setHideDelay(2000);
 
         b.addSelectionListener(new class SelectionAdapter {
