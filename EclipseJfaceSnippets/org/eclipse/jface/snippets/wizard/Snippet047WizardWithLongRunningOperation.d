@@ -32,9 +32,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.ProgressBar;
 import org.eclipse.swt.widgets.Shell;
-
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import java.lang.all;
-import java.utils.ArrayList;
+import java.util.ArrayList;
 
 import java.lang.Thread;
 import tango.text.convert.Format;
@@ -147,12 +147,7 @@ public class Snippet047WizardWithLongRunningOperation {
             }
 
             setControl(mt.comp);
-
-            ModalContext.run( dgRunnable(&mt.threadWork), true, getProgressMonitor(), getShell().getDisplay() );
-
-            //Thread t = new Thread(&mt.threadWork);
-
-            // t.start();
+            dialog.run( true, true, dgIRunnableWithProgress(&mt.threadWork));
         }
         class MyThread {
             private Composite parent;
@@ -240,6 +235,7 @@ public class Snippet047WizardWithLongRunningOperation {
     }
 
     static Shell shell;
+    static WizardDialog dialog;
     public static void main(String[] args) {
         Display display = new Display();
 
@@ -251,7 +247,7 @@ public class Snippet047WizardWithLongRunningOperation {
         b.addSelectionListener(new class SelectionAdapter {
 
             public void widgetSelected(SelectionEvent e) {
-                WizardDialog dialog = new WizardDialog(shell, new MyWizard(1));
+                dialog = new WizardDialog(shell, new MyWizard(1));
                 dialog.open();
             }
 
@@ -262,7 +258,7 @@ public class Snippet047WizardWithLongRunningOperation {
         b.addSelectionListener(new class SelectionAdapter {
 
             public void widgetSelected(SelectionEvent e) {
-                WizardDialog dialog = new WizardDialog(shell, new MyWizard(2));
+                dialog = new WizardDialog(shell, new MyWizard(2));
                 dialog.open();
             }
 

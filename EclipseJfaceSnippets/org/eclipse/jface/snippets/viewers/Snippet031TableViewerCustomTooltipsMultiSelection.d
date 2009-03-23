@@ -16,6 +16,7 @@ module org.eclipse.jface.snippets.viewers.Snippet031TableViewerCustomTooltipsMul
 // http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.jface.snippets/Eclipse%20JFace%20Snippets/org/eclipse/jface/snippets/viewers/Snippet031TableViewerCustomTooltipsMultiSelection.java?view=markup
 
 import tango.util.Convert;
+import java.lang.all;
 import java.util.ArrayList;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
